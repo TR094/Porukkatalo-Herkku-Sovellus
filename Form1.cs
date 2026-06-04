@@ -17,9 +17,9 @@ namespace pien_herkun_softa
 		{
 			InitializeComponent();
 
-			updateTimer.Interval = 10000;
-			updateTimer.Tick += async (s, e) => await UpdateProductsAsync();
-			updateTimer.Start();
+			//updateTimer.Interval = 10000;
+			//updateTimer.Tick += async (s, e) => await UpdateProductsAsync();
+			//updateTimer.Start();
 
 			textBox1.GotFocus += (s, e) => this.ActiveControl = null;
 
@@ -96,46 +96,3 @@ namespace pien_herkun_softa
 			}
 		}
 	}
-
-
-
-
-	namespace pien_herkun_softa
-	{
-		public class TabsMain : TitleBarTabs
-		{
-			public TabsMain()
-			{
-				TabRenderer = new ChromeTabRenderer(this);
-
-				Tabs.Add(new TitleBarTab(this)
-				{
-					Content = new Form1 { Text = "Hinnasto" }
-				});
-
-				Tabs.Add(new TitleBarTab(this)
-				{
-					Content = new FormTuotteet { Text = "Tuotteet" }
-				});
-
-				SelectedTabIndex = 0;
-			}
-
-			public override TitleBarTab CreateTab()
-			{
-				return new TitleBarTab(this)
-				{
-					Content = new Form1 { Text = "Hinnasto" }
-				};
-			}
-		}
-	}
-
-	public partial class FormTuotteet : Form
-	{
-		public FormTuotteet()
-		{
-
-		}
-	}
-}
