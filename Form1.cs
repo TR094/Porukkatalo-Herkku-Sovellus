@@ -164,7 +164,6 @@ namespace pien_herkun_softa
             editingProduct = null;
 
             textBox1.Text = ""; // Nimi
-            textBox2.Text = ""; // Määrä
             textBox3.Text = ""; // Tukkuhinta
             textBox4.Text = ""; // Suositushinta
 
@@ -190,7 +189,6 @@ namespace pien_herkun_softa
             if (editingProduct == null) return;
 
             textBox1.Text = editingProduct.Name;
-            textBox2.Text = editingProduct.Maara.ToString();
             textBox3.Text = editingProduct.Tukkuhinta.ToString("0.00");
             textBox4.Text = editingProduct.Suositushinta.ToString("0.00");
 
@@ -224,7 +222,6 @@ namespace pien_herkun_softa
         private async void button6_Click(object sender, EventArgs e)
         {
             string nimi = textBox1.Text.Trim();
-            int.TryParse(textBox2.Text.Trim(), out int maara);
             decimal.TryParse(textBox3.Text.Trim().Replace(",", "."), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal tukku);
             decimal.TryParse(textBox4.Text.Trim().Replace(",", "."), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal suositus);
 
@@ -240,7 +237,6 @@ namespace pien_herkun_softa
                 var uusi = new Product
                 {
                     Name = nimi,
-                    Maara = maara,
                     Tukkuhinta = tukku,
                     Suositushinta = suositus
                 };
@@ -250,7 +246,6 @@ namespace pien_herkun_softa
             {
                 // Edit existing
                 editingProduct.Name = nimi;
-                editingProduct.Maara = maara;
                 editingProduct.Tukkuhinta = tukku;
                 editingProduct.Suositushinta = suositus;
             }
